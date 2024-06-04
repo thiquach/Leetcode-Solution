@@ -15,12 +15,14 @@ public class Reverse {
         String trimmedString = numberAsString.trim();
         String reversedString = new StringBuilder(trimmedString).reverse().toString();
 
-        long reversedNumber = Long.parseLong(reversedString);
-        if (reversedNumber > Integer.MAX_VALUE || reversedNumber < Integer.MIN_VALUE) {
-            System.out.println("reversed number out of range");
-            return 0;
-        } else {
+        try {
+            long reversedNumber = Long.parseLong(reversedString.toString());
+            if (reversedNumber > Integer.MAX_VALUE || reversedNumber < Integer.MIN_VALUE) {
+                return 0;
+            }
             return isNegative ? (int)-reversedNumber : (int)reversedNumber;
+        } catch (NumberFormatException e) {
+            return 0;
         }
     }
 }
