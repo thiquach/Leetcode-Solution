@@ -7,25 +7,20 @@ public class MoveZeroes {
         int[] nums = {0, 1, 0, 3, 12};
         System.out.println("Move zeroes " + Arrays.toString(nums));
         moveZeroes(nums);
+        System.out.println("Moved       " + Arrays.toString(nums));
     }
 
     private static void moveZeroes(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
+        int lastNonZeroIndex = 0;
 
-        while (left < right) {
-            while (left < right && nums[left] != 0) {
-                left++;
-            }
-
-            if (left < right) {
-                for (int j=left; j < right; j++) {
-                    nums[j] = nums[j+1];
-                }
-                nums[right] = 0;
-                right--;
+        for (int i=0; i<nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[lastNonZeroIndex++] = nums[i];
             }
         }
-        System.out.println("move zero " + Arrays.toString(nums));
+
+        for (int j=lastNonZeroIndex; j < nums.length; j++) {
+            nums[j] = 0;
+        }
     }
 }
