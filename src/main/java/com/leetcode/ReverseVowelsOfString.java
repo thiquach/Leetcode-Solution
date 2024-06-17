@@ -11,26 +11,27 @@ public class ReverseVowelsOfString {
     }
 
     public static String reverseVowels(String s) {
-        char[] chars = s.toCharArray();
+        StringBuilder sb = new StringBuilder(s);
 
         int left = 0;
-        int right = chars.length - 1;
+        int right = s.length() - 1;
+
         while (left < right) {
-            while (left < right && !isVowel(chars[left])) {
+            while (left < right && !isVowel(sb.charAt(left))) {
                 left++;
             }
-            while (left < right && !isVowel(chars[right])) {
+            while (left < right && !isVowel(sb.charAt(right))) {
                 right--;
             }
-            if (chars[left] != chars[right]) {
-                char temp = chars[left];
-                chars[left] = chars[right];
-                chars[right] = temp;
-           }
-           left++;
-           right--;
-         }
-        return new String(chars);
+            if (sb.charAt(left) != sb.charAt(right)) {
+                char temp = sb.charAt(left);
+                sb.setCharAt(left, sb.charAt(right));
+                sb.setCharAt(right, temp);
+            }
+            left++;
+            right--;
+        }
+        return sb.toString();
     }
 
     private static boolean isVowel (char ch) {
