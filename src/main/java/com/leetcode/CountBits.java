@@ -4,30 +4,21 @@ import java.util.Arrays;
 
 public class CountBits {
     public static void main(String[] args) {
-        int n = 5;
+        int n = 7;
 
-        int[] result = countingBits(n);
+        int[] result = countBits(n);
         System.out.println("n is " + n + " count " + Arrays.toString(result));
     }
 
-    private static int[] countingBits(int n) {
-        if (n < 0)
+    public static int[] countBits(int n) {
+        if (n < 0) {
             return new int[0];
+        }
 
-        int len = n+1;
-        int[] result = new int[len];
+        int[] result = new int[n + 1];
 
-        result[0] = 0;
-        int bitsCount = 0;
-        for (int i=1; i<len; i++) {
-            String binString = Integer.toBinaryString(i);
-            int index = binString.indexOf("1");
-            while (index >= 0) {
-                bitsCount++;
-                index = binString.indexOf("1", index+1);
-            }
-            result[i] = bitsCount;
-            bitsCount = 0;
+        for (int i = 1; i <= n; i++) {
+            result[i] = result[i>>1] + (i & 1);
         }
         return result;
     }
