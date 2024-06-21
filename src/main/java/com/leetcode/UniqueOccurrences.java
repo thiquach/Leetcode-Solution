@@ -1,26 +1,24 @@
 package main.java.com.leetcode;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class UniqueOccurrences {
     public static void main(String[] args) {
-        int[] nums = {1, 3, 4, 5};
+        int[] nums = {1, 2};
         System.out.println("list  " + Arrays.toString(nums) + " Unique? " + uniqueOccurrences(nums));
     }
 
     public static boolean uniqueOccurrences(int[] arr) {
-
         if (arr == null) return false;
         if (arr.length == 1) return true;
 
-        Set<Integer> arrAsSet = new HashSet<>();
-        for (int num : arr) {
-            if (!arrAsSet.add(num)) {
-                return false;
-            }
+        int len = arr.length;
+        Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
+        for (int i=0; i<len; i++) {
+            countMap.put(arr[i], countMap.getOrDefault(arr[i], 0) + 1);
         }
-        return true;
+
+        Set<Integer> occurrenceSet = new HashSet<Integer>(countMap.values());
+        return occurrenceSet.size() == countMap.size();
     }
 }
