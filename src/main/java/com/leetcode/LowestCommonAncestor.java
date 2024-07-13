@@ -73,6 +73,7 @@ public class LowestCommonAncestor {
                 return right;
             else
                 return left;
+            return (left != null) ? left : right;
         }
     }
 }
