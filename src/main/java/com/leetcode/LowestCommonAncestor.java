@@ -69,11 +69,8 @@ public class LowestCommonAncestor {
 
             if (left != null && right != null)
                 return root;
-            if (right != null)
-                return right;
-            else
-                return left;
-            return (left != null) ? left : right;
+
+            return left != null ? left : right;
         }
     }
 }
