@@ -1,6 +1,6 @@
 package main.java.com.leetcode;
 
-public class BinaryTreeSearch {
+public class SearchBST {
     public static class TreeNode {
         int val;
         TreeNode left;
@@ -16,11 +16,11 @@ public class BinaryTreeSearch {
 
     public static void main(String[] args) {
         //TreeNode root = new TreeNode [4, 2, 7, 1, 3];
-        BinaryTreeSearch.TreeNode root = new BinaryTreeSearch.TreeNode(4);
-        BinaryTreeSearch.TreeNode left = new BinaryTreeSearch.TreeNode(2);
-        BinaryTreeSearch.TreeNode right = new BinaryTreeSearch.TreeNode(7);
-        BinaryTreeSearch.TreeNode leftLeft = new BinaryTreeSearch.TreeNode(1);
-        BinaryTreeSearch.TreeNode leftRight = new BinaryTreeSearch.TreeNode(3);
+        SearchBST.TreeNode root = new SearchBST.TreeNode(4);
+        SearchBST.TreeNode left = new SearchBST.TreeNode(2);
+        SearchBST.TreeNode right = new SearchBST.TreeNode(7);
+        SearchBST.TreeNode leftLeft = new SearchBST.TreeNode(1);
+        SearchBST.TreeNode leftRight = new SearchBST.TreeNode(3);
         root.left = left;
         root.right = right;
         root.left.left = leftLeft;
