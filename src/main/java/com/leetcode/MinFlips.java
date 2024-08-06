@@ -15,7 +15,6 @@ public class MinFlips {
                 || a > Math.pow(10,9) || b > Math.pow(10,9) || c > Math.pow(10,9))
             return 0;
 
-        int bits = 0;
         int count = 0;
         while (c > 0 || a > 0 || b > 0) {
             if (((a & 1) | (b & 1)) != (c & 1)) {
