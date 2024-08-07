@@ -21,16 +21,23 @@ public class Subsets {
             return lists;
 
         List<Integer> list = new ArrayList<>();
-        long setSize = (long) Math.pow(2, len);
-        for (int mask=0; mask<setSize; mask++) {
-            for (int i=0; i < len; i++) {
-                if ((mask & (1 << i)) >> i == 1) {
-                    list.add(nums[i]);
-                }
-            }
-            lists.add(new ArrayList<>(list));
-            list.clear();
-        }
+        getSubsets(nums, 0, list, lists);
         return lists;
+    }
+
+    private static void getSubsets(int[] nums, int start, List<Integer> list, List<List<Integer>> lists) {
+
+        // base case
+        if (start > nums.length)
+            return;
+
+        lists.add(new ArrayList<>(list));
+
+        // recursion case
+        for (int i=start; i<nums.length; i++) {
+            list.add(nums[i]);
+            getSubsets(nums, i + 1, list, lists);
+            list.remove(list.size() - 1);
+        }
     }
 }
