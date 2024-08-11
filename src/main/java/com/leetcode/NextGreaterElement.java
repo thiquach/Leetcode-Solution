@@ -25,7 +25,7 @@ public class NextGreaterElement {
             while (!stack.isEmpty() && stack.peek() < nums2[i]) {
                 int num = stack.peek();
                 if (nums1Map.containsKey(num)) {
-                    int index = nums1Map.get(num).intValue();
+                    int index = nums1Map.get(num);
                     result[index] = nums2[i];
                 }
                 stack.pop();
