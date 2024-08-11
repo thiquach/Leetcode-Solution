@@ -15,16 +15,14 @@ public class DailyTemperatures {
     public static int[] dailyTemperatures(int[] temperatures) {
         int len = temperatures.length;
         int[] result = new int[len];
-        Stack<Pair<Integer, Integer>> stack = new Stack<>();
+        Stack<int[]> stack = new Stack<>();
 
-        for (int i=0; i<len; i++) {
-
-            while (!stack.isEmpty() && stack.peek().getKey() < temperatures[i]) {
-                int index = stack.peek().getValue();
-                stack.pop();
+        for (int i = 0; i < len; i++) {
+            while (!stack.isEmpty() && stack.peek()[0] < temperatures[i]) {
+                int index = stack.pop()[1];
                 result[index] = i - index;
             }
-            stack.push(new Pair<>(temperatures[i], i));
+            stack.push(new int[]{temperatures[i], i});
         }
         return result;
     }
