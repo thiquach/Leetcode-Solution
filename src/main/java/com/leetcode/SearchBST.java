@@ -26,25 +26,25 @@ public class SearchBST {
         root.left.left = leftLeft;
         root.left.right = leftRight;
 
-        TreeNode result = searchBST(root, 2);
+        int key = 2;
+        TreeNode result = searchBST(root, key);
         if (result != null)
             System.out.println("val found " + result.val);
         else
             System.out.println("value not found");
     }
 
-    public static TreeNode searchBST(TreeNode root, int val) {
+    public static TreeNode searchBST(TreeNode root, int key) {
         if (root == null)
             return null;
 
-        if (root.val == val)
+        if (root.val == key)
             return root;
 
-        TreeNode leftResult = searchBST(root.left, val);
-        if (leftResult != null) {
-            return leftResult;
+        if (key < root.val) {
+            return searchBST(root.left, key);
+        } else {
+            return searchBST(root.right, key);
         }
-
-        return searchBST(root.right, val);
     }
 }
