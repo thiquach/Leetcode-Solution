@@ -35,10 +35,7 @@ public class SearchBST {
     }
 
     public static TreeNode searchBST(TreeNode root, int key) {
-        if (root == null)
-            return null;
-
-        if (root.val == key)
+        if (root == null || root.val == key)
             return root;
 
         if (key < root.val) {
