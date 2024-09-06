@@ -11,18 +11,18 @@ public class FindCenter {
     }
 
     public static int findCenter(int[][] edges) {
-        Map<Integer, Integer> degreeMap = new HashMap<>();
+        // node number starts from 1
+        int len = edges.length + 2;
+        int[] nodeCount = new int[len];
 
         for (int[] edge : edges) {
-            degreeMap.put(edge[0], degreeMap.getOrDefault(edge[0], 0) + 1);
-            degreeMap.put(edge[1], degreeMap.getOrDefault(edge[1], 0) + 1);
+            nodeCount[edge[0]]++;
+            nodeCount[edge[1]]++;
         }
 
-        int numVertices = degreeMap.size();
-
-        for (Map.Entry<Integer, Integer> entry : degreeMap.entrySet()) {
-            if (entry.getValue() == numVertices - 1) {
-                return entry.getKey();
+        for (int i=0; i<nodeCount.length; i++) {
+            if (nodeCount[i] == edges.length) {
+                return i;
             }
         }
         return -1;
