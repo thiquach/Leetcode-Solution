@@ -1,2 +1,3 @@
-package main.java.com.leetcode;public class Isisomorphic {
+package main.java.com.leetcode;
+public class Isisomorphic {
 }
