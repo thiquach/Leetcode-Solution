@@ -31,10 +31,7 @@ public class MyStack {
     }
 
     public boolean empty() {
-        if (!myStack.isEmpty())
-            return false;
-        else
-            return true;
+        return myStack.isEmpty();
     }
 
     public static void main(String[] args) {
