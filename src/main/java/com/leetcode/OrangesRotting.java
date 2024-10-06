@@ -1,7 +1,7 @@
 package main.java.com.leetcode;
 
 import java.util.*;
-
+// 994 - Graph multi source BFS
 public class OrangesRotting {
     public static void main(String[] args) {
 //        int[][] grid = new int[][] {{2,1,1},{1,1,0},{0,1,1}};
@@ -34,8 +34,9 @@ public class OrangesRotting {
         }
         Deque<List<Integer>> queue = new LinkedList<>();
         for (int i=0; i<result.size(); i++) {
-            queue.addLast(new LinkedList<>(Arrays.asList(result.get(i).get(0), result.get(i).get(1), 0)));
-            visited[result.get(i).get(0)][result.get(i).get(1)] = -2;
+            List<Integer> current = result.get(i);
+            queue.addLast(new LinkedList<>(Arrays.asList(current.get(0), current.get(1), 0)));
+            visited[current.get(0)][current.get(1)] = -2;
         }
 
         int maxCount = 0;
@@ -48,13 +49,15 @@ public class OrangesRotting {
                 List<List<Integer>> list1 = findNeighbors(grid, visited, node);
                 combinedList.addAll(list1);
             }
-            for (int i = 0; i < combinedList.size(); i++) {
-                if (visited[combinedList.get(i).get(0)][combinedList.get(i).get(1)] != -2) {
-                    visited[combinedList.get(i).get(0)][combinedList.get(i).get(1)] = -2;
-                    if (grid[combinedList.get(i).get(0)][combinedList.get(i).get(1)] == 1) {
-                        queue.addLast(new LinkedList<>(Arrays.asList(combinedList.get(i).get(0), combinedList.get(i).get(1), combinedList.get(i).get(2))));
-                        grid[combinedList.get(i).get(0)][combinedList.get(i).get(1)] = 2;
-                        maxCount = Math.max(maxCount, combinedList.get(i).get(2));
+            size = combinedList.size();
+            for (int i = 0; i<size; i++) {
+                List<Integer> current = combinedList.get(i);
+                if (visited[current.get(0)][current.get(1)] != -2) {
+                    visited[current.get(0)][current.get(1)] = -2;
+                    if (grid[current.get(0)][current.get(1)] == 1) {
+                        queue.addLast(new LinkedList<>(Arrays.asList(current.get(0), current.get(1), current.get(2))));
+                        grid[current.get(0)][current.get(1)] = 2;
+                        maxCount = Math.max(maxCount, current.get(2));
                     }
                 }
             }
