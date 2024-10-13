@@ -14,34 +14,20 @@ public class MinOperations {
     }
 
     public static int minOperations(String[] logs) {
-        String twoDots = "..";
-        String oneDot = ".";
-
         Stack<String> stack = new Stack<>();
         stack.push("Main");
         for (int i=0; i<logs.length; i++) {
             String dest = logs[i].substring(0, logs[i].length() - 1);
-            if (dest.equals(oneDot)) continue;
-            if (dest.equals(twoDots)) {
+            if (dest.equals(".")) continue;
+            if (dest.equals("..")) {
                 if (!stack.isEmpty() && !Objects.equals(stack.peek(), "Main")) {
-                    System.out.println("pop " + stack.pop());
+                    stack.pop();
                 }
             } else {
-                System.out.println("push " + dest);
                 stack.push(dest);
             }
         }
 
-        int size = stack.size();
-        int count = 0;
-        for (int i=0; i<size; i++) {
-            if (stack.peek().equals("Main")) {
-                break;
-            } else {
-                System.out.println("pop " + stack.pop());
-                count++;
-            }
-        }
-        return count;
+        return stack.size() - 1;
     }
 }
