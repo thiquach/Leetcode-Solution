@@ -24,11 +24,9 @@ public class SortPeople {
 
         Integer[] heightArray = Arrays.stream(heights).boxed().toArray(Integer[]::new);
         Arrays.sort(heightArray, Collections.reverseOrder());
-        for (int i = 0; i<heightArray.length; i++) {
-            for (Map.Entry<Integer, String> m : heightMap.entrySet()) {
-                if (m.getKey().equals(heightArray[i])) {
-                    result.add(m.getValue());
-                }
+        for (int i = 0; i < heightArray.length; i++) {
+            if (heightMap.containsKey(heightArray[i])) {
+                result.add(heightMap.get(heightArray[i]));
             }
         }
 
