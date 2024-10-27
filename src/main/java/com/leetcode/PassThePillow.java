@@ -2,7 +2,7 @@ package main.java.com.leetcode;
 
 public class PassThePillow {
     public static void main(String[] args) {
-//        System.out.println("PassThePillow " + passThePillow(3, 2));
+//        System.out.println("PassThePillow " + passThePillow(4, 5));
         System.out.println("PassThePillow " + passThePillow(18, 38));
     }
 
@@ -15,19 +15,22 @@ public class PassThePillow {
         int dir = 1;
         while (count < time) {
             if (pillowHolder > 0 && pillowHolder < n) {
-                if (dir == 1)
+                if (dir == 1) {
                     pillowHolder++;
+                    if (pillowHolder == n) {
+                        dir = -1;
+                    }
+                }
                 else {
                     pillowHolder--;
-                    if (pillowHolder == 1)
+                    if (pillowHolder == 1) {
                         dir = 1;
+                    }
                 }
             } else {
                 dir = -1;
-                pillowHolder--;
-                if (pillowHolder == 1)
+                if (--pillowHolder == 1)
                     dir = 1;
-
             }
             count++;
         }
