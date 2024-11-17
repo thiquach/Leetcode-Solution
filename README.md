@@ -1,4 +1,6 @@
 git remote add origin git@github.com:<username>CodingPractice
-My Leetcode solutions in Java
+
+Leetcode solution
+
 TwoSum.java
 Reverse.java
