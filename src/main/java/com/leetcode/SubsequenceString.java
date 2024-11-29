@@ -1,18 +1,21 @@
 package main.java.com.leetcode;
-
+// 392 easy
 public class SubsequenceString {
     public static void main(String[] args) {
-        String s1 = "";
-        String s2 = "";
-        System.out.println("s1 " + s1 + " s2 " + s2 + " result " + isSubsequenceString(s1, s2));
+        String s1 = "abc";
+        String s2 = "ahbgdc";
+        System.out.println("s1 " + s1 + " s2 " + s2 + " result " + isSubsequence(s1, s2));
     }
 
-    private static boolean isSubsequenceString(String s, String t) {
+    public static boolean isSubsequence(String s, String t) {
         int sLen = s.length();
         int tLen = t.length();
 
         if (sLen == 0)
             return true;
+
+        if (tLen < sLen)
+            return false;
 
         int lastIndex = 0;
         if (sLen <= tLen) {
@@ -26,7 +29,6 @@ public class SubsequenceString {
                         break;
                     }
                 }
-                System.out.println(s.charAt(i) + " flag " + found);
                 if (!found)
                     return false;
             }
