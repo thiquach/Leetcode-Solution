@@ -18,20 +18,18 @@ public class SubsequenceString {
             return false;
 
         int lastIndex = 0;
-        if (sLen <= tLen) {
-            boolean found = false;
-            for (int i=0; i<sLen; i++) {               // s1
-                found = false;
-                for (int j=lastIndex; j<tLen; j++) {   // s2
-                    if (s.charAt(i) == t.charAt(j)) {
-                        found = true;
-                        lastIndex = j+1;
-                        break;
-                    }
+        boolean found = false;
+        for (int i=0; i<sLen; i++) {               // s1
+            found = false;
+            for (int j=lastIndex; j<tLen; j++) {   // s2
+                if (s.charAt(i) == t.charAt(j)) {
+                    found = true;
+                    lastIndex = j+1;
+                    break;
                 }
-                if (!found)
-                    return false;
             }
+            if (!found)
+                return false;
         }
         return true;
     }
