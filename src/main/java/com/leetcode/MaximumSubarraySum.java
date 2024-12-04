@@ -25,7 +25,6 @@ public class MaximumSubarraySum {
             if (!numsSet.contains(nums[right])) {
                 numsSet.add(nums[right]);
                 sum += nums[right];
-                System.out.print(" sum " + sum + " ");
 
                 if (right - left + 1 > k) {
                     numsSet.remove(nums[left]);
@@ -35,7 +34,6 @@ public class MaximumSubarraySum {
 
                 if (right - left + 1 == k) {
                     maxSum = Math.max(sum, maxSum);
-                    System.out.println(" max " + maxSum);
                 }
             } else {
                 while (nums[left] != nums[right]) {
