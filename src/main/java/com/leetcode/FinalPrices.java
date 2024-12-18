@@ -20,13 +20,10 @@ public class FinalPrices {
             result[i] = prices[i];
             while (!stack.isEmpty() && stack.peek()[0] >= prices[i]) {
                 int[] p = stack.pop();
-                System.out.println(" pop " + p[0] + " index " + p[1]);
                 result[p[1]] = prices[p[1]] - prices[i];
             }
-            System.out.println(" push " + prices[i]);
             stack.push(new int[]{prices[i], i});
         }
-        System.out.println(" result " + Arrays.toString(result));
         return result;
     }
 }
