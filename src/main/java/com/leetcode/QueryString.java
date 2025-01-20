@@ -10,30 +10,24 @@ public class QueryString {
     public static boolean queryString(String s, int n) {
 
         for (int i=1; i<=n; i++) {
-            Integer binaryNumber = convertDecimalToBinary(i);
-            if (!s.contains(binaryNumber.toString())) {
+            String binary = convertDecimalToBinary(i);
+            if (!s.contains(binary)) {
                 return false;
             }
         }
         return true;
     }
 
-    public static Integer convertDecimalToBinary(Integer decimalNumber) {
+    public static String convertDecimalToBinary(Integer n) {
 
-        if (decimalNumber == 0) {
-            return decimalNumber;
+        StringBuilder binary = new StringBuilder();
+
+        while (n > 0) {
+            int remainder = n % 2;
+            binary.append(remainder);
+            n = n/2;
         }
 
-        StringBuilder binaryNumber = new StringBuilder();
-        Integer quotient = decimalNumber;
-
-        while (quotient > 0) {
-            int remainder = quotient % 2;
-            binaryNumber.append(remainder);
-            quotient /= 2;
-        }
-
-        binaryNumber = binaryNumber.reverse();
-        return Integer.valueOf(binaryNumber.toString());
+        return binary.reverse().toString();
     }
 }
