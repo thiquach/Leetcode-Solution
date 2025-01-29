@@ -10,15 +10,19 @@ public class Generate {
     }
 
     public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> nRows= new ArrayList<List<Integer>>();
-        ArrayList<Integer> row = new ArrayList<Integer>();
-        for(int i=0;i<numRows;i++)
-        {
-            row.add(0, 1);
-            for(int j=1;j<row.size()-1;j++)
-                row.set(j, row.get(j)+row.get(j+1));
-            nRows.add(new ArrayList<Integer>(row));
+        List<List<Integer>> triangle = new ArrayList<List<Integer>>();
+
+        for (int i=0; i<numRows; i++) {
+            List<Integer> currentRow = new ArrayList<>();
+            for (int j=0; j<=i; j++) {
+                if (j == 0 || j == i) {
+                    currentRow.add(1);
+                } else {
+                    currentRow.add(triangle.get(i-1).get(j-1) + triangle.get(i-1).get(j));
+                }
+            }
+            triangle.add(currentRow);
         }
-        return nRows;
+        return triangle;
     }
 }
