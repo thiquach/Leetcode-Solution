@@ -11,12 +11,11 @@ public class TupleSameProduct {
     }
 
     public static int tupleSameProduct(int[] nums) {
-        if (nums.length < 2)
-            return 0;
+        int length = nums.length;
 
         Map<Integer, Integer> productMap = new HashMap();
-        for (int i=0; i<nums.length; i++) {
-            for (int j=i+1; j<nums.length; j++) {
+        for (int i=0; i<length; i++) {
+            for (int j=i+1; j<length; j++) {
                 int product = nums[i] *nums[j];
                 productMap.put(product, productMap.getOrDefault(product, 0) + 1);
             }
