@@ -10,18 +10,17 @@ public class FindDuplicate {
         System.out.println("list  " + Arrays.toString(nums) + " duplicate " + findDuplicate(nums));
     }
 
-    private static int findDuplicate (int[] nums) {
+    public static int findDuplicate (int[] nums) {
         if ((nums == null) || (nums.length == 1))
             return 0;
 
-        Set<Integer> numsAsSet = new HashSet<>();
-
-        for (int num: nums) {
-            if (numsAsSet.contains(num)) {
-                return num;
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return nums[i];
             }
-            numsAsSet.add(num);
         }
-        return 0;
+
+        return nums.length;
     }
 }
