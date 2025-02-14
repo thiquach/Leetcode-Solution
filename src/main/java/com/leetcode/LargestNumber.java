@@ -26,12 +26,12 @@ public class LargestNumber {
         Collections.sort(listStrings, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                StringBuilder sb1 = new StringBuilder();
-                sb1.append(o1).append(o2);
-                StringBuilder sb2 = new StringBuilder();
-                sb2.append(o2).append(o1);
-                BigInteger order1Value = new BigInteger(sb1.toString());
-                BigInteger order2Value = new BigInteger(sb2.toString());
+                StringBuilder sbuilder = new StringBuilder();
+                sbuilder.append(o1).append(o2);
+                BigInteger order1Value = new BigInteger(sbuilder.toString());
+                sbuilder.setLength(0);
+                sbuilder.append(o2).append(o1);
+                BigInteger order2Value = new BigInteger(sbuilder.toString());
 
                 // Compare BigInteger values
                 return order2Value.compareTo(order1Value);
