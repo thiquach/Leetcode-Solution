@@ -17,7 +17,6 @@ public class PunishmentNumber {
             return 0;
 
         List<List<Integer>> partitions = new ArrayList<>();
-        int[][] memo = new int[][];
         int punishmentNumber = 0;
         for (int i=1; i<=n; i++) {
             int product = i * i;
