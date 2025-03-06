@@ -11,7 +11,7 @@ public class Merge2DArrays {
 
     public static int[][] mergeArrays(int[][] nums1, int[][] nums2) {
         if (nums1 == null || nums2 == null)
-            return new int[][] {};coding
+            return new int[][] {};
 
         Map<Integer, Integer> sumMap = new TreeMap<>();
 
