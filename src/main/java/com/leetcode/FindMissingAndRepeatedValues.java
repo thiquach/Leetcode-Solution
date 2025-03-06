@@ -16,21 +16,16 @@ public class FindMissingAndRepeatedValues {
         int numLength = grid.length * grid.length;
         int total = numLength * (numLength + 1) / 2;
 
-        int[] nums = new int[numLength];
+        Set<Integer> numsSet = new HashSet<>();
         int index = 0;
         int setSum = 0;
         int pSum = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                nums[index] = grid[i][j];
-                pSum += nums[index];
+                numsSet.add(grid[i][j]);
+                pSum += grid[i][j];
                 index++;
             }
-        }
-
-        Set<Integer> numsSet = new HashSet<>();
-        for (int num : nums) {
-            numsSet.add(num);
         }
 
         List<Integer> list = new ArrayList<>(numsSet);
